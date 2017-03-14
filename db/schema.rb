@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308185556) do
+ActiveRecord::Schema.define(version: 20170308190921) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "learn_batch_id"
     t.string   "batch_name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "lesson_completions", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "days_since_last_seen"
+    t.integer  "lessons_completed"
+    t.integer  "total_lessons"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["student_id"], name: "index_lesson_completions_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
