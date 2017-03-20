@@ -19,3 +19,5 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+## config.json file for Google Sheets Adapter
+config.json
