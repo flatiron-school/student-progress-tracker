@@ -2,12 +2,15 @@ require 'rails_helper'
 
 describe LearnApi do
 
-  let(:learn_adapter) { LearnApi.new(batch_name: 'Web-1116', batch_id: 432) }
+  before :each do
+    Batch.create(batch_name: 'Web-1116', learn_batch_id: 432)
+  end
+
+  let(:learn_adapter) { LearnApi.new(432) }
 
   context 'when batch exists' do
 
     it "doesn't create duplicate batches" do
-      Batch.create(batch_name: 'Web-1116', learn_batch_id: 432)
       learn_adapter.create_lesson_completions
       expect(Batch.count).to eq(1)
     end
