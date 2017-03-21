@@ -1,5 +1,4 @@
 class Student < ApplicationRecord
-
   belongs_to :batch
   has_many :lesson_completions
 
