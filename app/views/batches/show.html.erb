@@ -1,7 +1,10 @@
 <h1><%= @batch.batch_name %></h1>
 
+<%= column_chart @batch.students_percent_complete %>
+<%= column_chart @batch.students_lessons_complete %>
+
 <ul>
   <% @batch.students.each do |student| %>
-    <li><%= "Name: #{student.full_name} Completion Percentage: #{number_to_percentage( student.most_recent_completion.percent_complete * 100)}"%></li>
+    <li><%= "Name: #{student.full_name} Completion Percentage: #{@batch.percentage_complete_for(student)}"%></li>
   <% end %>
 </ul>

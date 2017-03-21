@@ -8,11 +8,11 @@ class Student < ApplicationRecord
   end
 
   def most_recent_completion
-    lesson_completions_by_date.first
+    lesson_completions.first
   end
 
-  def lesson_completions_by_date
-    lesson_completions.order(created_at: :desc)
+  def previous_completion
+    lesson_completions.second
   end
 
 end
