@@ -12,6 +12,6 @@ class LessonCompletion < ApplicationRecord
   end
 
   def previous_lesson_completion
-    @previous_lesson_completion ||= student.lesson_completions_by_date.second
+    @previous_lesson_completion ||= student.lesson_completions.second
   end
 end
