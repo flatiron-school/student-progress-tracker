@@ -1,14 +1,17 @@
 class Student < ApplicationRecord
-
   belongs_to :batch
   has_many :lesson_completions
 
-  def most_recent_completion
-    lesson_completions_by_date.first
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
-  def lesson_completions_by_date
-    lesson_completions.order(created_at: :desc)
+  def most_recent_completion
+    lesson_completions.first
+  end
+
+  def previous_completion
+    lesson_completions.second
   end
 
 end
